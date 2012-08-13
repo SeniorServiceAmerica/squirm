@@ -81,7 +81,7 @@ module Squirm
       Squirm.exec query, arguments.format(*args) do |result|
         if block_given?
           yield result
-        elsif return_type =~ /\ASETOF/
+        elsif return_type =~ /\ASETOF/ || return_type =~ /\ATABLE/
           result.to_a
         else
           result.getvalue(0,0)
